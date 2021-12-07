@@ -14,7 +14,12 @@ export default function MeanGrade() {
   useEffect(() => {
     RequestService.getGradesMean()
       .then((res) => {
-        setData(Math.trunc(res.averageGrade * 100) / 100);
+        if (res.averageGrade) {
+          setData(Math.trunc(res.averageGrade * 100) / 100);
+        }
+        else {
+          setData(null);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -30,10 +35,11 @@ export default function MeanGrade() {
         <div id="wrapper">
           {error && (
             <div>
-              Impossible de récupérer les données, vérifier les services !
+              Can't retrieve data, check your connection!
             </div>
           )}
           {data && <h2 className="title">{data}</h2>}
+          {data === null && <h3 className="title">No data yet !</h3>}
         </div>
       </div>
     </div>

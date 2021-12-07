@@ -44,6 +44,11 @@ export default function getAllClients() {
               })}
             </ul>
           )}
+          {data.length === 0 && (
+            <div>
+              No data in the database for the moment !
+            </div>
+          )}
         </div>
       </div>
     </div>

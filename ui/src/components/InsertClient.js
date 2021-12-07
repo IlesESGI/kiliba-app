@@ -31,8 +31,8 @@ export default function InsertClient() {
       setError(true);
       return;
     }
-    const regexNumber = /^[1-9]\d*$/;
-    if (!grade || !regexNumber.test(grade)) {
+    const regexNumber = /^[0-9]\d*$/;
+    if (!regexNumber.test(grade)) {
       setError(true);
       return;
     }
