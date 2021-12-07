@@ -28,6 +28,15 @@ services:
       - DB_PORT=$MONGODB_DOCKER_PORT
     stdin_open: true
     tty: true
+  nginx-react:
+    container_name: ngixreactapp
+    build:
+      context: .
+      dockerfile: ./ui/Dockerfile
+    ports:
+      - 80:80
+    environment:
+      NODE_ENV: production
 
 volumes:
   db:
