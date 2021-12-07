@@ -14,7 +14,7 @@ export default function MeanGrade() {
   useEffect(() => {
     RequestService.getGradesMean()
       .then((res) => {
-        if (res.averageGrade) {
+        if (res.averageGrade || res.averageGrade === 0) {
           setData(Math.trunc(res.averageGrade * 100) / 100);
         }
         else {
