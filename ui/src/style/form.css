@@ -19,6 +19,9 @@ label {
 .title {
     text-align: center
 }
+.errorMessage {
+	margin-top: 10px;
+}
 
 input {
 	height: 18px;

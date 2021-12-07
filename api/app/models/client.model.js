@@ -1,4 +1,6 @@
 module.exports = mongoose => {
+
+  // Define mongoose Schema of a Client made of an email as a String and a grade as a Number
   var schema = mongoose.Schema(
     {
       email: String,
@@ -6,12 +8,6 @@ module.exports = mongoose => {
     },
     { timestamps: true }
   );
-
-  schema.method("toJSON", function() {
-    const { __v, _id, ...object } = this.toObject();
-    object.id = _id;
-    return object;
-  });
 
   const Client = mongoose.model("client", schema);
   return Client;

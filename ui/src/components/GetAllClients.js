@@ -2,19 +2,20 @@ import Navbar from './Navbar';
 import React, { useState, useEffect } from 'react';
 import RequestService from '../services/request-services.js';
 
-// Page (/get_mean) that allow user to check the average grade of all clients
-export default function MeanGrade() {
+// Page (/get_data) that retrieve all the data in the database
+export default function getAllClients() {
+
   // Store data from API
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
 
   // Error set to true if we can't join API
   const [error, setError] = useState(false);
 
-  // On the load of the page launch API request to get average grade
+  // On the load of the page launch API request to get all the clients
   useEffect(() => {
-    RequestService.getGradesMean()
+    RequestService.getAllClients()
       .then((res) => {
-        setData(Math.trunc(res.averageGrade * 100) / 100);
+        setData(res);
       })
       .catch((err) => {
         console.log(err);
@@ -26,14 +27,23 @@ export default function MeanGrade() {
     <div>
       <Navbar />
       <div>
-        <h2 className="title">Grade's mean</h2>
+        <h2 className="title">Users data</h2>
         <div id="wrapper">
-          {error && (
+          {error ? (
             <div>
               Impossible de récupérer les données, vérifier les services !
             </div>
+          ) : (
+            <ul>
+              {data.map((item, key) => {
+                return (
+                  <li key={key}>
+                    Email : {item.email} Grade : {item.grade}{' '}
+                  </li>
+                );
+              })}
+            </ul>
           )}
-          {data && <h2 className="title">{data}</h2>}
         </div>
       </div>
     </div>

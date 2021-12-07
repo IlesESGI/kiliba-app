@@ -1,5 +1,5 @@
 const dbConfig = require("../config/db.config.js");
-
+// Setup Mongo database
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 

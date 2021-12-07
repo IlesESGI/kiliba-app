@@ -3,13 +3,18 @@ module.exports = app => {
 
   var router = require("express").Router();
 
-  // Create a new Client
+  // Post route to create and save a client 
   router.post("/createClient", clients.create);
 
-  // Retrieve all Clients
+  // Get route to retrieve all clients present in database
   router.get("/retrieveAllClients", clients.findAll);
 
-  router.get("/retrieveClient", clients.findOne);
+  // Get route to retrieve all the client containing email string from the database
+  router.get("/retrieveClient", clients.find);
 
+  // Get route to compute the average mean of all the clients
+  router.get("/retrieveGradesMean", clients.retrieveGradesMean);
+
+  // Base URL of the API
   app.use("/api/clients", router);
 };

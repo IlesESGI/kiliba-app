@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Navbar to navigate in the front used by everypage
 export default function Navbar() {
   return (
     <div>
@@ -11,7 +12,7 @@ export default function Navbar() {
           <a href="/insert_data">Insert new data</a>
         </li>
         <li>
-          <a href="/get_data">Get clients data</a>
+          <a href="/get_all_clients">Get clients data</a>
         </li>
         <li>
           <a href="/search_mail">Search a specific mail</a>

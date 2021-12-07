@@ -33,10 +33,10 @@ services:
     build:
       context: .
       dockerfile: ./ui/Dockerfile
+    env_file: ./.env
     ports:
       - 80:80
     environment:
-      NODE_ENV: production
-
+      - NODE_ENV=production
 volumes:
   db:

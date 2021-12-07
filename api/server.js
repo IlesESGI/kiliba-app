@@ -1,46 +1,37 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const path = require("path");
-
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
 const app = express();
 
-var corsOptions = {
-  origin: `http://localhost:${process.env.NODE_DOCKER_PORT}`
-};
+// Use CORS to allow routes to be accessed anywhere
+app.use(cors());
 
-app.get("/api", (req, res) => {
-  res.json({ message: "Hello from server!" });
-});
-
-app.use(cors(corsOptions));
-
-// parse requests of content-type - application/json
+// Parse requests of content-type - application/json
 app.use(express.json());
 
-// parse requests of content-type - application/x-www-form-urlencoded
+// Parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-const db = require("./app/models");
-
-console.log(db.url);
-
+// Connect API to databse Mongo
+const db = require('./app/models');
 db.mongoose
   .connect(db.url, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
   })
   .then(() => {
-    console.log("Connected to the database!");
+    console.log('Successfully connected to the database!');
   })
-  .catch(err => {
-    console.log("Cannot connect to the database!", err);
+  .catch((err) => {
+    console.log('Fail to connect to the database!', err);
     process.exit();
   });
 
-require("./app/routes/client.routes")(app);
+// Call all the API's routes
+require('./app/routes/client.routes')(app);
 
-// set port, listen for requests
+// Set port, listen for requests
 const PORT = process.env.NODE_DOCKER_PORT || 8081;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
