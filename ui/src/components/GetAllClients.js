@@ -27,7 +27,7 @@ export default function getAllClients() {
     <div>
       <Navbar />
       <div>
-        <h2 className="title">Users data</h2>
+        <h2 className="title">User(s) data</h2>
         <div id="wrapper">
           {error ? (
             <div>
