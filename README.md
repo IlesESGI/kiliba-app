@@ -14,3 +14,11 @@ Go to root folder and type : <br>
 Different ports of these services can be edited in the .env file
 
 Once everything is launched you can open your browser and go to **localhost:80** to interact with the front !
+
+## To dev the app
+
+In the ui folder, type **npm install** then **npm run start**
+
+In the api folder, type **(sudo) docker-compose -f docker-compose-dev.yml up --build**
+
+Both front and back will reload on file change !
