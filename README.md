@@ -21,6 +21,6 @@ In the ui folder, type **npm install** then **npm run start** (if an error heart
 
 In the api folder, type **npm install**
 
-In teh root fodler, type **(sudo) docker-compose -f docker-compose-dev.yml up --build**
+In the root folder, type **(sudo) docker-compose -f docker-compose-dev.yml up --build**
 
 Both front and back will reload on file change !
